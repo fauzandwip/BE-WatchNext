@@ -32,7 +32,7 @@ const writeMovies = async () => {
 				title,
 				overview,
 				imageURL: `https://image.tmdb.org/t/p/w500` + poster_path,
-				rating: vote_average
+				rating: +vote_average.toFixed(1)
 			};
 		});
 
