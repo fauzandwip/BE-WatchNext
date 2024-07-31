@@ -16,7 +16,7 @@ This project builds a secure and versatile backend API using Node.js and Express
 
 ## API Documentation
 
-<!-- [API Documentation URL](https://documenter.getpostman.com/view/25307672/2sA3JDi64D) -->
+[API Documentation Link](https://documenter.getpostman.com/view/25307672/2sA3kd9Gy7)
 
 <!-- ## Demo Video -->
 
