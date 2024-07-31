@@ -32,7 +32,8 @@ const writeMovies = async () => {
 				title,
 				overview,
 				imageURL: `https://image.tmdb.org/t/p/w500` + poster_path,
-				rating: +vote_average.toFixed(1)
+				rating: +vote_average.toFixed(1),
+				isWatched: Math.random() < 0.5 ? false : true
 			};
 		});
 
