@@ -1,12 +1,26 @@
+const { Op } = require('sequelize');
 const { Movie } = require('../models');
 
 class MovieController {
   static async getMovies(req, res, next) {
+    const { search } = req.query
+
+    const queryOption = {
+      where: {},
+      order: [['updatedAt', 'DESC']]
+    }
+
+    if (search) {
+      queryOption.where.title = {
+        [Op.iLike]: `%${search}%`
+      }
+    }
+
     try {
-      const movies = await Movie.findAll();
+      const movies = await Movie.findAll(queryOption);
 
       res.status(200).json({
-        message: 'Success Get All Movies',
+        message: 'Success Get Movies',
         data: movies,
       });
     } catch (error) {
