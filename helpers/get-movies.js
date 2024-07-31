@@ -1,25 +1,26 @@
 const axios = require('axios');
 const { writeFile } = require('node:fs/promises');
 
-if (process.env.NODE_ENV !== "production") {
-	require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
 }
 
 const getMovies = async () => {
-	const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
+  const url =
+    'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
 
-	try {
-		const { data } = await axios.get(url, {
-			headers: {
-				"Content-Type": "application/json",
-				"Authorization": `Bearer ${process.env.TMDB_TOKEN}`
-			}
-		});
-		// console.log(data.results);
-		return data.results;
-	} catch (error) {
-		console.log(error);
-	}
+  try {
+    const { data } = await axios.get(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.TMDB_TOKEN}`,
+      },
+    });
+    // console.log(data.results);
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const writeMovies = async () => {
@@ -37,13 +38,13 @@ const writeMovies = async () => {
 			};
 		});
 
-		await writeFile(
-			__dirname + '/../dummy_data/movies.json',
-			JSON.stringify(mappedMovies, null, 2)
-		);
-	} catch (error) {
-		console.log(error);
-	}
+    await writeFile(
+      __dirname + '/../dummy_data/movies.json',
+      JSON.stringify(mappedMovies, null, 2)
+    );
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 writeMovies();
