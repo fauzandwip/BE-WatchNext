@@ -7,40 +7,39 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       overview: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
       },
       imageURL: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       rating: {
         type: Sequelize.FLOAT,
-        allowNull: false
+        allowNull: false,
       },
       isWatched: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: false
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Movies');
-  }
+  },
 };
